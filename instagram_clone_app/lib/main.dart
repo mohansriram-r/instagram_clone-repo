@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone_app/screens/create_account_screen/create_account_screen.dart';
 import 'package:instagram_clone_app/screens/login_screen/login_screen.dart';
 import 'package:instagram_clone_app/utils/theme/theme.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Instagram-Clone',
       theme: CThemeData.darkThemeData,
-      home: const LoginScreen(),
+      home: const CreateAccountScreen(),
     );
   }
 }

@@ -10,6 +10,11 @@ class CTextTheme {
       fontWeight: FontWeight.bold,
       color: CColors.primaryColor,
     ),
+    headlineMedium: const TextStyle().copyWith(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: CColors.primaryColor,
+    ),
     headlineSmall: const TextStyle().copyWith(
       fontSize: 17,
       fontWeight: FontWeight.normal,

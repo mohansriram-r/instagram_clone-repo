@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone_app/screens/custom_widget/text_field.dart';
 import 'package:instagram_clone_app/utils/constants/colors.dart';
-import 'package:instagram_clone_app/utils/constants/icon_strings.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class CreateAccountScreen extends StatefulWidget {
+  const CreateAccountScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _userName = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+class _CreateAccountScreenState extends State<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _userName = TextEditingController();
+    final TextEditingController _password = TextEditingController();
+    final TextEditingController _email = TextEditingController();
+
     return Scaffold(
       body: Center(
         child: Padding(
@@ -24,17 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Flexible(
-                flex: 1,
-                child: Container(),
-              ),
-              SvgPicture.asset(
-                CIconStrings.instagarmLogo,
-                width: 200,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
+              Text(
+                "Create a account",
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(
                 height: 30,
@@ -47,8 +39,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10,
               ),
               CTextField(
+                controller: _email,
+                text: "Enter your email",
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CTextField(
                 controller: _password,
-                text: "Password",
+                text: "Create a password",
                 ispass: true,
               ),
               const SizedBox(
@@ -69,31 +68,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Container(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have a account?",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    child: Text(
-                      "SignUp",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20,
               )
             ],
           ),

@@ -14,14 +14,17 @@ class CTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final inputBorder =
+        OutlineInputBorder(borderSide: Divider.createBorderSide(context));
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        hintText: text,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-      ),
+          hintText: text,
+          border: inputBorder,
+          focusedBorder: inputBorder,
+          enabledBorder: inputBorder,
+          filled: true,
+          contentPadding: const EdgeInsets.all(8)),
       obscureText: ispass,
       keyboardType: ispass ? TextInputType.text : TextInputType.emailAddress,
     );
