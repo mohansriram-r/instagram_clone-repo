@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/screens/create_account_screen/create_account_screen.dart';
 import 'package:instagram_clone_app/screens/login_screen/login_screen.dart';
 import 'package:instagram_clone_app/utils/theme/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

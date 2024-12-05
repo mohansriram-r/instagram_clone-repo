@@ -14,6 +14,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _userName = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+    @override
+  void dispose() {
+    super.dispose();
+    _userName.dispose();
+    _password.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

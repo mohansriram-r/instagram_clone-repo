@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_app/screens/custom_widget/text_field.dart';
+import 'package:instagram_clone_app/service/auth_service.dart';
 import 'package:instagram_clone_app/utils/constants/colors.dart';
 
 class CreateAccountScreen extends StatefulWidget {
@@ -10,12 +11,39 @@ class CreateAccountScreen extends StatefulWidget {
 }
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
+  final TextEditingController _userName = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _bio = TextEditingController();
+
+  showSnackBar(String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _userName.dispose();
+    _email.dispose();
+    _password.dispose();
+    _bio.dispose();
+  }
+
+  void signUp() async {
+    String res = await AuthService().signUpUser(
+      email: _email.text,
+      bio: _bio.text,
+      password: _password.text,
+      username: _userName.text,
+    );
+
+    if (res != "Sucess") {
+      showSnackBar(res);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _userName = TextEditingController();
-    final TextEditingController _password = TextEditingController();
-    final TextEditingController _email = TextEditingController();
-
     return Scaffold(
       body: Center(
         child: Padding(
@@ -51,9 +79,17 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 ispass: true,
               ),
               const SizedBox(
+                height: 10,
+              ),
+              CTextField(
+                controller: _bio,
+                text: "Bio",
+              ),
+              const SizedBox(
                 height: 20,
               ),
               InkWell(
+                onTap: signUp,
                 child: Container(
                   height: 50,
                   width: double.infinity,
